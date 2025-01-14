@@ -1,1 +1,1 @@
-# -journey-companion
+# journey-companion
