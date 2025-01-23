@@ -2,34 +2,53 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./../styles/Header.css";
 import { LogoutProps } from "../interfaces/Login";
-import { Button } from "@mui/material";
+import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 
 const Header: React.FC<LogoutProps> = ({ onLogout }) => {
   return (
-    <header className="navbar">
-      {/* Logo centrado */}
-      <div className="logo">JoCo</div>
+    <AppBar position="static">
+      <Toolbar variant="dense">
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          JoCo
+        </Typography>
+        <Box sx={{ display: "flex", gap: 2 }}>
+          <Button
+            component={NavLink}
+            to="/home"
+            color="inherit"
+            sx={{
+              "&.active": { borderBottom: "2px solid white" },
+            }}
+          >
+            Home
+          </Button>
+          <Button
+            component={NavLink}
+            to="/services"
+            color="inherit"
+            sx={{
+              "&.active": { borderBottom: "2px solid white" },
+            }}
+          >
+            Services
+          </Button>
+          <Button
+            component={NavLink}
+            to="/activities"
+            color="inherit"
+            sx={{
+              "&.active": { borderBottom: "2px solid white" },
+            }}
+          >
+            Activities
+          </Button>
+          <Button color="inherit" onClick={onLogout}>
+            Logout
+          </Button>
+        </Box>
+      </Toolbar>
+    </AppBar>
 
-      {/* Menú de navegación alineado a la derecha */}
-      <nav className="nav-links">
-        <NavLink to="/home" className={({ isActive }) => (isActive ? "active" : "")}>
-          Home
-        </NavLink>
-        <NavLink
-          to="/services"
-          className={({ isActive }) => (isActive ? "active" : "")}
-        >
-          Services
-        </NavLink>
-        <NavLink
-          to="/activities"
-          className={({ isActive }) => (isActive ? "active" : "")}
-        >
-          Activities
-        </NavLink>
-        <Button color="inherit" onClick={onLogout}> Logout </Button>
-      </nav>
-    </header>
   );
 };
 
