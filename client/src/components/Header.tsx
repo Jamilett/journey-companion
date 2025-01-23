@@ -1,8 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./../styles/Header.css";
+import { LogoutProps } from "../interfaces/Login";
+import { Button } from "@mui/material";
 
-const Header: React.FC = () => {
+const Header: React.FC<LogoutProps> = ({ onLogout }) => {
   return (
     <header className="navbar">
       {/* Logo centrado */}
@@ -10,7 +12,7 @@ const Header: React.FC = () => {
 
       {/* Menú de navegación alineado a la derecha */}
       <nav className="nav-links">
-        <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
+        <NavLink to="/home" className={({ isActive }) => (isActive ? "active" : "")}>
           Home
         </NavLink>
         <NavLink
@@ -25,6 +27,7 @@ const Header: React.FC = () => {
         >
           Activities
         </NavLink>
+        <Button color="inherit" onClick={onLogout}> Logout </Button>
       </nav>
     </header>
   );
