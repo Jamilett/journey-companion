@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "hola123",
+    "database": "journey_companion",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "hola123",
+    "database": "journey_companion_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "hola123",
+    "database": "journey_companion_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
