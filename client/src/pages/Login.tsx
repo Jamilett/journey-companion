@@ -15,8 +15,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     if (!email || !password) {
       setError("Please enter both email and password.");
       return;
-      // TODO: Handle login logic with Google
-    } else if (email !== "admin" && password !== "admin") {
+    } else if (email !== "admin" || password !== "admin") {
       setError("Invalid email or password.");
       return;
     }
@@ -27,54 +26,106 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <Paper elevation={3} sx={{ padding: 4, borderRadius: 2 }}>
-        <Typography component="h1" variant="h5" align="center" gutterBottom>Login</Typography>
-        <Box
-          component="form"
-          onSubmit={handleSubmit}
-          noValidate
-          sx={{ mt: 2 }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="password"
-            label="Password"
-            name="password"
-            autoComplete="password"
-            autoFocus
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+    <Box
+      sx={{
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#f0f4f8",
+      }}
+    >
+      <Container component="main" maxWidth="xs">
+        <Paper
+          elevation={5}
+          sx={{
+            padding: 4,
+            borderRadius: 3,
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+            backgroundColor: "#ffffff",
+          }}
+        >
+          <Typography
+            component="h1"
+            variant="h4"
+            align="center"
+            gutterBottom
+            sx={{ color: "#333" }}
           >
-            Log In
-          </Button>
-        </Box>
-        {error && (
-          <Typography color="error" variant="body2" sx={{ mt: 2 }}>
-            {error}
+            Login
           </Typography>
-        )}
-      </Paper>
-    </Container>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{
+              mt: 2,
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+            }}
+          >
+            <TextField
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 3,
+                },
+              }}
+            />
+            <TextField
+              required
+              fullWidth
+              id="password"
+              label="Password"
+              name="password"
+              autoComplete="current-password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 3,
+                },
+              }}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{
+                mt: 2,
+                backgroundColor: "#007bff",
+                color: "#fff",
+                "&:hover": {
+                  backgroundColor: "#0056b3",
+                },
+              }}
+            >
+              Log In
+            </Button>
+          </Box>
+          {error && (
+            <Typography
+              color="error"
+              variant="body2"
+              align="center"
+              sx={{ mt: 2 }}
+            >
+              {error}
+            </Typography>
+          )}
+        </Paper>
+      </Container>
+    </Box>
   );
 };
 
