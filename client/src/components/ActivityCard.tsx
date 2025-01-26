@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardProps } from '../interfaces/Card';
 
-const MyCard = ({ title, imageUrl, onClick }: CardProps) => {
+const ActivityCard = ({ title, imageUrl, onClick }: CardProps) => {
 
   const handleClick = () => {
     if (onClick) {
@@ -40,4 +40,4 @@ const MyCard = ({ title, imageUrl, onClick }: CardProps) => {
     </>
   );
 }
-export default MyCard;
+export default ActivityCard;
