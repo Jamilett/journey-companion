@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Activities from "./components/Activities";
 import Header from "./components/Header";
 import Services from "./components/Services";
@@ -10,7 +10,7 @@ const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
   const handleLogin = () => {
-    setIsLoggedIn(true);
+    setIsLoggedIn(true); 
   };
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -21,7 +21,7 @@ const App: React.FC = () => {
       {isLoggedIn && <Header onLogout={handleLogout} />}
       <Routes>
         <Route path="/"
-          element={<Login onLogin={handleLogin} />} />
+          element={isLoggedIn ? <Navigate to="/home" /> : <Login onLogin={handleLogin} />} />
         <Route path="/home"
           element={isLoggedIn ? <HomePage /> : <Login onLogin={handleLogin} />} />
         <Route path="/services"
