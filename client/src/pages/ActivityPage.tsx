@@ -1,8 +1,9 @@
+import { Box, Typography } from "@mui/material";
 import React from "react";
-import "./../styles/Activities.css";
 import { allActivities } from "../api/activities";
-import MyCard from "../components/Card";
-import { Box } from "@mui/material";
+import ActivityCard from "../components/ActivityCard";
+import "./../styles/Activities.css";
+import BookModal from "../components/BookModal";
 
 const ActivityPage: React.FC = () => {
 
@@ -13,17 +14,24 @@ const ActivityPage: React.FC = () => {
     setSelectedActivity(name);
   }
 
+  const closeModal = () => {
+    setSelectedActivity(null);
+    console.log('close', selectedActivity);
+  };
+
   return (
     <>
       <Box className="activities">
-        <h1>Activity Page</h1>
-
-        <div className="activity-grid">
+        <Typography variant="h4"> Activities </Typography>
+        <Box className="activity-grid">
           {allActivities.map(
             (activity) => (
-              <MyCard title={activity.name} imageUrl={`/images/${activity.image}`} onClick={handleActivityClick} />
+              <ActivityCard title={activity.name} imageUrl={`/images/${activity.image}`} onClick={handleActivityClick} />
             ))}
-        </div>
+        </Box>
+        {selectedActivity && (
+          <BookModal selectedActivity={selectedActivity} closeModal={closeModal} />
+        )}
       </Box>
 
     </>

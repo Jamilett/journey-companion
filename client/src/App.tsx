@@ -1,11 +1,10 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Activities from "./components/Activities";
 import Header from "./components/Header";
 import Services from "./components/Services";
+import ActivityPage from "./pages/ActivityPage";
 import HomePage from "./pages/Home";
 import Login from "./pages/Login";
-import ActivityPage from "./pages/ActivityPage";
 
 const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
