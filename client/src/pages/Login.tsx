@@ -1,17 +1,16 @@
-import { Box, Button, Container, Paper, TextField, Typography } from "@mui/material";
+import { Box, Container, Paper, Typography } from "@mui/material";
 import { useState } from "react";
+import LoginForm from "../components/LoginForm";
 import { LoginProps } from "../interfaces/Login";
-import { useNavigate } from "react-router-dom";
 
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (email: string, password: string) => {
     if (!email || !password) {
       setError("Please enter both email and password.");
       return;
@@ -19,8 +18,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       setError("Invalid email or password.");
       return;
     }
-    onLogin();
-    navigate("/home");
+    onLogin(); // Call the onLogin function passed from the parent component (App.tsx)
+    // navigate("/home");
     setError("");
     console.log(`Email: ${email} Password: ${password}`);
   };
@@ -54,75 +53,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
           >
             Login
           </Typography>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{
-              mt: 2,
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-            }}
-          >
-            <TextField
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  borderRadius: 3,
-                },
-              }}
-            />
-            <TextField
-              required
-              fullWidth
-              id="password"
-              label="Password"
-              name="password"
-              autoComplete="current-password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  borderRadius: 3,
-                },
-              }}
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{
-                mt: 2,
-                backgroundColor: "#007bff",
-                color: "#fff",
-                "&:hover": {
-                  backgroundColor: "#0056b3",
-                },
-              }}
-            >
-              Log In
-            </Button>
-          </Box>
-          {error && (
-            <Typography
-              color="error"
-              variant="body2"
-              align="center"
-              sx={{ mt: 2 }}
-            >
-              {error}
-            </Typography>
-          )}
+          <LoginForm onSubmit={handleSubmit} error={error} />
         </Paper>
       </Container>
     </Box>
