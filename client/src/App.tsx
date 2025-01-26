@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Services from "./components/Services";
 import HomePage from "./pages/Home";
 import Login from "./pages/Login";
+import ActivityPage from "./pages/ActivityPage";
 
 const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -27,7 +28,7 @@ const App: React.FC = () => {
         <Route path="/services"
           element={isLoggedIn ? <Services /> : <Login onLogin={handleLogin} />} />
         <Route path="/activities"
-          element={isLoggedIn ? <Activities /> : <Login onLogin={handleLogin} />} />
+          element={isLoggedIn ? <ActivityPage /> : <Login onLogin={handleLogin} />} />
       </Routes>
     </div>
   );
