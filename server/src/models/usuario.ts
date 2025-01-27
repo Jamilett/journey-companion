@@ -83,4 +83,5 @@ const initUsuarioModel = (sequelize: Sequelize) => {
   return Usuario;
 };
 
+// Exportamos ambas referencias
 export { Usuario, initUsuarioModel };

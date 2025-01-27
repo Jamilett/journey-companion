@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { Sequelize, DataTypes } from 'sequelize';
-import { UsuarioModel } from './usuario'; // Ajusta si usas exportaciones predeterminadas
+import { Sequelize } from 'sequelize';
+import { initUsuarioModel, Usuario } from './usuario';
 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
@@ -15,13 +15,14 @@ const sequelize = config.use_env_variable
 // Interfaz para el contenedor de modelos
 interface DB {
   sequelize: Sequelize;
-  Usuario: ReturnType<typeof UsuarioModel>;
+  Usuario: typeof Usuario;
   [key: string]: any;
 }
 
+// Inicializamos manualmente el modelo Usuario
 const db: DB = {
   sequelize,
-  Usuario: UsuarioModel(sequelize, DataTypes),
+  Usuario: initUsuarioModel(sequelize), // Configuración del modelo Usuario
 };
 
 // Importar automáticamente otros modelos (si los hay)
@@ -34,8 +35,11 @@ fs.readdirSync(__dirname)
       file.indexOf('.test.ts') === -1
   )
   .forEach((file) => {
-    const model = require(path.join(__dirname, file)).default(sequelize, DataTypes);
-    db[model.name] = model;
+    const model = require(path.join(__dirname, file));
+    if (model.init) {
+      const initializedModel = model.init(sequelize);
+      db[initializedModel.name] = initializedModel;
+    }
   });
 
 // Configurar asociaciones si los modelos las definen
