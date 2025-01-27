@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import { allActivities } from "../api/activities";
+import { allActivities, myActivities } from "../api/activities";
 import ActivityCard from "../components/ActivityCard";
 import BookModal from "../components/BookModal";
 import { ActivityFormValues, SelectedActivity } from '../interfaces/Activity';
@@ -23,7 +23,9 @@ const ActivityPage: React.FC = () => {
   };
 
   const postActivity = (formValues: ActivityFormValues) => {
-    console.log('post activity', { ...formValues, activity: { name: selectedActivityName, id: selectedActivityId } });
+    const body = { ...formValues, activity: { name: selectedActivityName, id: selectedActivityId } };
+    console.log('post activity', body);
+    -myActivities.push(body);
   }
 
   return (
