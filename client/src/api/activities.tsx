@@ -1,4 +1,6 @@
-export const allActivities = [
+import { Activity, ActivityFormValues } from "../interfaces/Activity";
+
+export const allActivities: Activity[] = [
   {
     id: "hiking",
     name: "Hiking",
@@ -42,3 +44,6 @@ export const allActivities = [
     times: ["10:00", "14:00", "18:00"],
   },
 ];
+
+
+export const myActivities: ActivityFormValues[] = [];
