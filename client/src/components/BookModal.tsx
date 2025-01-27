@@ -1,5 +1,5 @@
 import React, { FormEvent } from "react";
-import { allActivities, myActivities } from "../api/activities";
+import { allActivities } from "../api/activities";
 import { countries } from "../api/countries";
 import { ActivityFormValues, BookModalProps } from '../interfaces/Activity';
 import "./../styles/Activities.css";

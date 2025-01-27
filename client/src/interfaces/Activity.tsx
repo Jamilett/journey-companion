@@ -14,6 +14,7 @@ export interface ActivityFormValues {
   country: string;
   date: string;
   time: string;
+  image?: string;
   selectedActivity?: SelectedActivity
 }
 
