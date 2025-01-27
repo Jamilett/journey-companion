@@ -46,4 +46,23 @@ export const allActivities: Activity[] = [
 ];
 
 
-export const myActivities: ActivityFormValues[] = [];
+export const myActivities: ActivityFormValues[] = [
+  {
+    name: "Hiking",
+    lastName: "Doe",
+    country: "Mexico",
+    image: "hiking.jpg",
+    date: "2025-01-30",
+    time: "09:00",
+    selectedActivity: { name: "Hiking", id: "hiking" }
+  },
+  {
+    name: "Sightseeing",
+    lastName: "Doe",
+    country: "Mexico",
+    image: "sightseeing.jpg",
+    date: "2025-01-30",
+    time: "09:00",
+    selectedActivity: { name: "Sightseeing", id: "sightseeing" }
+  }
+];

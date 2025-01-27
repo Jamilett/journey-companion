@@ -12,6 +12,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, error }) => {
     onSubmit(email, password); // Call the onSubmit function passed from the parent component (Login.tsx)
   };
 
+  const handleGoogleLogin = () => {
+    console.log("Iniciar sesión con Google");
+  };
+
   return (
     <Box
       component="form"
@@ -69,7 +73,22 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, error }) => {
           },
         }}
       >
-        Log In
+        Sign In
+      </Button>
+      <Button
+        fullWidth
+        variant="outlined"
+        onClick={handleGoogleLogin}
+        sx={{
+          mt: 1,
+          color: "#757575",
+          borderColor: "#757575",
+          "&:hover": {
+            backgroundColor: "#f5f5f5",
+          },
+        }}
+      >
+        Sign in with Google
       </Button>
       {/* Show error message if there is one */}
       {error && (
