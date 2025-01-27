@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Homepage.css";
 
-const Home: React.FC = () => {
+const Homepage: React.FC = () => {
   return (
     <div className="homepage">
   <header>
@@ -34,4 +34,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Homepage;
