@@ -1,6 +1,8 @@
+import { SelectedActivity } from './Activity';
+
 export interface CardProps {
-  title: string;
-  // description: string;
+  id: string;
+  name: string;
   imageUrl: string;
-  onClick: (name: string) => void;
+  onClick: (selectedActivity: SelectedActivity) => void;
 }
