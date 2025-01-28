@@ -1,16 +1,17 @@
 import { Sequelize } from "sequelize-typescript";
 import dotenv from "dotenv";
-import path from "path";
+import User from "../models/userModel";
+import Activity from "../models/activityModel";
 
-dotenv.config(); // Cargar variables de entorno
+dotenv.config();
 
 const sequelize = new Sequelize({
-  database: process.env.DB_NAME,
   dialect: "postgres",
+  host: process.env.DB_HOST,
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  host: process.env.DB_HOST,
-  models: [path.resolve(__dirname, '../models/*.ts')], // Verifica que la ruta sea correcta
+  database: process.env.DB_NAME,
+  models: [User, Activity],
 });
 
 export default sequelize;
