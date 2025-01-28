@@ -4,14 +4,14 @@ import { ActivityService } from './../services/activityService';
 export class ActivityController {
   
   static async create(req: Request, res: Response) {
-    const { title, description, peopleLimit } = req.body;
+    const { title: name, description, peopleLimit } = req.body;
 
-    if (!title || !description || !peopleLimit) {
+    if (!name || !description || !peopleLimit) {
       return res.status(400).json({ error: "Title, description, and peopleLimit are required" });
     }
 
     try {
-      const activity = await ActivityService.createActivity(title, description, peopleLimit);
+      const activity = await ActivityService.createActivity(name, description, peopleLimit);
       res.status(201).json(activity);
     } catch (error) {
       console.error(error);

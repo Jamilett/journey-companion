@@ -1,5 +1,6 @@
 import app from "./app";
 import sequelize from "./config/database";
+import addDefaultActivities from "./seeds/activitySeeds";
 
 const PORT = process.env.PORT || 3000;
 
@@ -7,6 +8,8 @@ const PORT = process.env.PORT || 3000;
   try {
     await sequelize.sync({ force: true });
     console.log("Database connected successfully.");
+
+    await addDefaultActivities();
     
     app.listen(PORT, () => {
       console.log(`Server is running on http://localhost:${PORT}`);
