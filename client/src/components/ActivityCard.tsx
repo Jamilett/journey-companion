@@ -27,9 +27,6 @@ const ActivityCard = ({ id, name, imageUrl, onClick }: CardProps) => {
           <Typography gutterBottom variant="h6" style={{ fontWeight: 'bold' }}>
             {name}
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fugiat modi blanditiis nam. Reiciendis, illum nam! Qui quasi error, magni, consequatur ab, incidunt culpa fugit laudantium tempora nobis animi reprehenderit.
-          </Typography>
         </CardContent>
         <CardActions>
           <Button type='submit' size="small" style={{ background: '#1976d2', color: 'white' }} onClick={handleClick}>
