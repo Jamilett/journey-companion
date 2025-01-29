@@ -5,3 +5,8 @@ export interface LoginProps {
 export interface LogoutProps {
   onLogout: () => void;
 }
+
+export interface LoginFormProps {
+  onSubmit: (email: string, password: string) => void;
+  error?: string;
+}

@@ -1,8 +1,8 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Activities from "./components/Activities";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
-import Services from "./components/Services";
+import MyActivityCard from "./components/MyActivityCard";
+import ActivityPage from "./pages/ActivityPage";
 import HomePage from "./pages/Home";
 import Login from "./pages/Login";
 
@@ -20,14 +20,18 @@ const App: React.FC = () => {
     <div>
       {isLoggedIn && <Header onLogout={handleLogout} />}
       <Routes>
-        <Route path="/"
-          element={<Login onLogin={handleLogin} />} />
-        <Route path="/home"
+        <Route
+          path="/"
+          element={isLoggedIn ? <Navigate to="/home" /> : <Login onLogin={handleLogin} />} />
+        <Route
+          path="/home"
           element={isLoggedIn ? <HomePage /> : <Login onLogin={handleLogin} />} />
-        <Route path="/services"
-          element={isLoggedIn ? <Services /> : <Login onLogin={handleLogin} />} />
-        <Route path="/activities"
-          element={isLoggedIn ? <Activities /> : <Login onLogin={handleLogin} />} />
+        <Route
+          path="/myactivities"
+          element={isLoggedIn ? <MyActivityCard /> : <Login onLogin={handleLogin} />} />
+        <Route
+          path="/activities"
+          element={isLoggedIn ? <ActivityPage /> : <Login onLogin={handleLogin} />} />
       </Routes>
     </div>
   );

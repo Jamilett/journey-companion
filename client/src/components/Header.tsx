@@ -24,16 +24,6 @@ const Header: React.FC<LogoutProps> = ({ onLogout }) => {
           </Button>
           <Button
             component={NavLink}
-            to="/services"
-            color="inherit"
-            sx={{
-              "&.active": { borderBottom: "2px solid white" },
-            }}
-          >
-            Services
-          </Button>
-          <Button
-            component={NavLink}
             to="/activities"
             color="inherit"
             sx={{
@@ -41,6 +31,16 @@ const Header: React.FC<LogoutProps> = ({ onLogout }) => {
             }}
           >
             Activities
+          </Button>
+          <Button
+            component={NavLink}
+            to="/myactivities"
+            color="inherit"
+            sx={{
+              "&.active": { borderBottom: "2px solid white" },
+            }}
+          >
+            My Activities
           </Button>
           <Button color="inherit" onClick={onLogout}>
             Logout

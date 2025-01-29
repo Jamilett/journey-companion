@@ -1,20 +1,16 @@
 {
   "compilerOptions": {
-    /* Language and Environment */
-    "target": "ES2020",                                /* Versión de JavaScript para el código emitido. */
-    "module": "CommonJS",                              /* Generar módulos CommonJS para Node.js. */
-    "lib": ["ES2020"],                                 /* Librerías base compatibles con ES2020. */
-    "rootDir": "./server/src",                         /* Directorio raíz de los archivos fuente. */
-    "outDir": "./dist",                                /* Directorio para los archivos compilados. */
-    "moduleResolution": "node",                       /* Resolver módulos al estilo Node.js. */
-    "esModuleInterop": true,                          /* Permite importar CommonJS como módulos ES. */
-    "forceConsistentCasingInFileNames": true,         /* Consistencia en nombres de archivos e imports. */
-    "strict": true,                                   /* Habilitar todas las opciones estrictas. */
-    "skipLibCheck": true,                             /* No verificar archivos de declaración `.d.ts`. */
-    "resolveJsonModule": true,                        /* Permitir la importación de archivos `.json`. */
-    "declaration": true,                              /* Generar archivos `.d.ts` para la documentación de tipos. */
-    "sourceMap": true                                 /* Generar mapas de fuente para facilitar depuración. */
+    "target": "ES6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
-  "include": ["server/src/**/*"],                     /* Incluir todos los archivos dentro de `server/src`. */
-  "exclude": ["node_modules", "dist"]                 /* Excluir directorios innecesarios. */
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
 }
