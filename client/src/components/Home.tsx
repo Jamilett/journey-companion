@@ -1,5 +1,5 @@
 import React from "react";
-import "@/styles/Homepage.css";
+import "@/styles/HomePage.css";
 import { Typography } from "@mui/material";
 
 const Home: React.FC = () => {
