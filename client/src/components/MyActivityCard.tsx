@@ -5,12 +5,6 @@ import "./../styles/MyActivity.css";
 
 const MyActivityCard: React.FC = () => {
 
-  const getActivities = () => {
-    // get activities from the database
-    console.log(myActivities)
-    // return activities
-  }
-
   return (
     <Box className="services">
       <Typography variant="h2" color="primary" style={{ fontWeight: "bold" }}>My Activities</Typography>
