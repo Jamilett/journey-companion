@@ -1,17 +1,13 @@
-import { Sequelize } from "sequelize-typescript";
-import dotenv from "dotenv";
-import User from "../models/userModel";
-import Activity from "../models/activityModel";
+import { Sequelize } from "sequelize";
 
-dotenv.config();
-
-const sequelize = new Sequelize({
+const sequelize = new Sequelize(process.env.DATABASE_URL as string, {
   dialect: "postgres",
-  host: process.env.DB_HOST,
-  username: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  models: [User, Activity],
+  dialectOptions: {
+    ssl: {
+      require: true, // Render requiere SSL para PostgreSQL
+      rejectUnauthorized: false,
+    },
+  },
 });
 
 export default sequelize;
