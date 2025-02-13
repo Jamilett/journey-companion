@@ -1,23 +1,20 @@
-import express from 'express';
-import sequelize from './config/connection.js'; 
-import routes from './routes/index.js';
+import app from "./app";
+import sequelize from "./config/database";
+import addDefaultActivities from "./seeds/activitySeeds";
 
-const forceDatabaseRefresh = false;
+const PORT = process.env.PORT || 3000;
 
-const app = express();
-const PORT = process.env.PORT || 3001;
+(async () => {
+  try {
+    await sequelize.sync({ force: true });
+    console.log("Database connected successfully.");
 
-
-app.use(express.static('../client/dist'));
-
-app.use(express.json());
-
-
-app.use(routes);
-
-
-sequelize.sync({ force: forceDatabaseRefresh }).then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server is listening on port ${PORT}`);
-  });
-});
+    await addDefaultActivities();
+    
+    app.listen(PORT, () => {
+      console.log(`Server is running on http://localhost:${PORT}`);
+    });
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
+})();

@@ -11,5 +11,8 @@ export default defineConfig({
     },
   },
   base: '/',
+  build: {
+    outDir: 'client/dist', // `client/dist`
+  },
   publicDir: "public"
 })
